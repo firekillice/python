@@ -33,7 +33,6 @@ if __name__ == "__main__":
 	actor1 = actor('Lucy')
 	actor1.outout_attr()
 
-
 	player1 = player('Tom',30,40)
 	player1.output_attr()
 

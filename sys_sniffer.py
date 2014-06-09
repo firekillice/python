@@ -68,8 +68,9 @@ def net_stat():
     lines = f.readlines()
     f.close()
     for line in lines[2:]:
-        con = line.split()
-        intf = dict(
+		content = line.split(':')
+		con = content[1].split()
+		intf = dict(
             zip(
                 ( 'interface','ReceiveBytes','ReceivePackets',
                   'ReceiveErrs','ReceiveDrop','ReceiveFifo',
@@ -77,15 +78,15 @@ def net_stat():
                   'TransmitBytes','TransmitPackets','TransmitErrs',
                   'TransmitDrop', 'TransmitFifo','TransmitFrames',
                   'TransmitCompressed','TransmitMulticast' ),
-                ( con[0].rstrip(":"),int(con[1]),int(con[2]),
-                  int(con[3]),int(con[4]),int(con[5]),
-                  int(con[6]),int(con[7]),int(con[8]),
-                  int(con[9]),int(con[10]),int(con[11]),
-                  int(con[12]),int(con[13]),int(con[14]),
-                  int(con[15]),int(con[16]), )
+                ( content[0].rstrip(':'),int(con[0]),int(con[1]),
+                  int(con[2]),int(con[3]),int(con[4]),
+                  int(con[5]),int(con[6]),int(con[7]),
+                  int(con[8]),int(con[9]),int(con[10]),
+                  int(con[11]),int(con[12]),int(con[13]),
+                  int(con[14]),int(con[15]))
             )
         )
-        net.append(intf)
+		net.append(intf)
     return net
 
 #get hard disk's state
