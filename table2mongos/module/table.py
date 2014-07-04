@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*- 
 import os
 
+#convert one csv table to tuple array
+
 class tablereader:
 	__filename = ''
 
@@ -10,16 +12,17 @@ class tablereader:
 		self.__open__()
 
 	def __open__(self):
-		print self.__filename
+	#	print self.__filename
 		f = open(self.__filename)
 		lines = f.readlines()
 		f.close()
 		
-		print len(lines)
+	#	print len(lines)
 		self.__content = [[]for i in range(len(lines))]
 		rdindex = 0
 		for line in lines:
 			line=line.strip('\n')			# remove "\n"
+			line=line.strip('\r')			# remove "\n"
 			parts = line.split('\t')
 			for index in range(0,len(parts)):
 				self.__content[rdindex].append(parts[index])
