@@ -11,6 +11,7 @@ def insert_mongo_db(filename,jsonstring):
 	filenameparts=filename.split('.')
 	filefirstname=filenameparts[0]
 	try:
+		print jsonstring
 		jsonobj = json.loads(jsonstring,encoding="utf-8")
 		G_Mongo.insert_json(filefirstname,jsonobj)
 	except Exception, e:
